@@ -24,7 +24,7 @@ export default function StateLogin() {
 
       <div className="control-row">
         <Input label="Email" id="Email" name="Email"  onChange={handleEmailChange}
-            value={emailValue} onBlur={handleEmailBlur} error={emailhasError && 'Please enter a vaild email!'}/>
+            value={emailValue} onBlur={handleEmailBlur} error={!emailhasError && 'Please enter a vaild email!'}/>
         
         <Input label="Password" id="Password" name="Password"  onChange={handlePasswordChange}
             value={passwordValue} onBlur={handlePsswordBlur}
