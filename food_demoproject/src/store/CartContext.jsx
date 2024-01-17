@@ -8,10 +8,11 @@ const CartContext= createContext({
 
 function cartReducer(state, action){
     //장바구니 추가
+    //action이란 객체가 props로 넘어옴
     if(action.type==='ADD_ITEM'){
         const existingCartItemIndex=state.items.findIndex((item) => item.id===action.item.id);
         const updatedItems = [...state.items];
-
+    
         if(existingCartItemIndex > -1){
             const existingItem = state.items[existingCartItemIndex]
             const updatedItem = {
@@ -28,7 +29,7 @@ function cartReducer(state, action){
     //장바구니 삭제
     if(action.type==='REMOVE_ITEM'){
         const existingCartItemIndex=state.items.findIndex(
-            (item) => item.id===action.item.id
+            (item) => item.id===action.id
         );
         const existingCartItem = state.items[existingCartItemIndex];
 
@@ -37,14 +38,16 @@ function cartReducer(state, action){
         if(existingCartItem.quantity ===1){
             updatedItems.splice(existingCartItemIndex,1);
         }
-        else{
-            const updatedItem ={...existingCartItem, quantity: existingCartItem.quantity -1}
-            updatedItem[existingCartItemIndex] = updatedItem
+        else {
+            const updatedItem = { ...existingCartItem, quantity: existingCartItem.quantity - 1 };
+            updatedItems[existingCartItemIndex] = updatedItem;
+
         }
+        
         return {...state, items:updatedItems}
     }
 
-    return state
+    return state;
 }
 
 export function CartContextProvider ({children}){
@@ -58,12 +61,12 @@ export function CartContextProvider ({children}){
    
     function addItem(item){
         dispatchCartAction({
-            type:'ADD_ITEM', item
+            type:'ADD_ITEM', item: item
         })
     }
     function removeItem (id){
         dispatchCartAction({
-            type:'REMOVE_ITEM', id
+            type:'REMOVE_ITEM', id: id
         })
     }
     console.log(cartContext)
