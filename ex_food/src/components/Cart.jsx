@@ -18,7 +18,7 @@ function Cart() {
       <h2>Your Cart</h2>
       <ul>
         {Cartctx.items.map((item)=>
-          <CartItem key={item.id} item={item} quantity={item.quantity} price={item.price} onIncrease={()=>Cartctx.addItem(item)} onDecrease={() => Cartctx.removeItem(item.id)}/>
+          <CartItem key={item.id} name={item.name} quantity={item.quantity} price={item.price} onIncrease={()=>Cartctx.addItem(item)} onDecrease={() => Cartctx.removeItem(item.id)}/>
         )}
       </ul>
       <Button textOnly onClick={handleCloseCart}>Close</Button>
