@@ -1,10 +1,11 @@
 import React from 'react'
 
-function Input({children,...props}) {
+function Input({label,id,...props}) {
   return (
-    <>
-    <input>{children}</input>
-    </>
+    <p className='control'>
+      <label htmlFor={id} >{label}</label>
+      <input id={id} required {...props} name={id}/>
+    </p>
   )
 }
 

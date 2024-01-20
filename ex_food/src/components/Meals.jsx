@@ -3,6 +3,7 @@ import { currencyFormatter } from '../util/CurrencyFormatter';
 import MealItem from './MealItem';
 function Meals() {
     const [loadedMeals, setLoadedMeals] = useState([]);
+    //useHttp로 fetch 클리어하기
     async function fetchMeals() {
         try {
             const response = await fetch('http://localhost:3000/meals')
