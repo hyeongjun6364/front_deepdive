@@ -6,6 +6,6 @@ function AuthenticationPage() {
 
 export default AuthenticationPage;
 
-export async function action(){
-  
+export async function action({request}){
+
 }
