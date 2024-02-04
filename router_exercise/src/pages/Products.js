@@ -1,13 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+const PRODUCTS = [
+    {id: 'p1', title:'Product 1'},
+    {id: 'p2', title:'Product 2'},
+    {id: 'p3', title:'Product 3'},
+]
 
 function ProductsPage() {
     return (
         <>
             <div>ProductsPage</div>
             <ul>
-                <li>product1</li>
-                <li>product2</li>
-                <li>product3</li>
+               {PRODUCTS.map((product)=>(
+                <li key={product.id}><Link to={`/products/${product.id}`}>{product.title}</Link> </li>
+               ))}
             </ul>
         </>
 

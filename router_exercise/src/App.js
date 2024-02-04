@@ -3,14 +3,18 @@ import HomePage from './pages/Home';
 import ProductsPage from './pages/Products';
 import RootLayout from './pages/Root';
 import ErrorPage from './pages/Error';
+import ProductDetailPage from './pages/ProductDetail';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
     errorElement:<ErrorPage/>,
-    children: [{path:'/',element:<HomePage/>},//라우트 객체이다.
-    {path:'/products',element:<ProductsPage/>},]
+    children: [
+      {path:'/',element:<HomePage/>},//라우트 객체이다.
+      {path:'/products',element:<ProductsPage/>},
+      {path:'/products/:productId', element:<ProductDetailPage/>}
+    ]
   },
 ]);
 
