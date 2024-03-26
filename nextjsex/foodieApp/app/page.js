@@ -7,10 +7,12 @@ export default function Home() {
     <>
     <header className={classes.header}>
       <div className={classes.slidehow}>
-        <ImageSlideshow/>
+      <ImageSlideshow/>
       </div>
+      
       <div>
         <div className={classes.hero}>
+        
           <h1>NextLevel Food for NextLevel Fooides</h1>
           <p>Taste & share food from all over the world.</p>
         </div>
