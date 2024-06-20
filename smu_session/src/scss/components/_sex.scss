@@ -1,0 +1,52 @@
+.sex-wrap{
+    @include column-flexbox(start,start);
+    padding: 64px 20px 86px 20px;
+    position: relative;
+    height: 100vh;
+    .backward-image{
+        display: block;
+        width: 28px;
+        height: auto;
+        margin-bottom: 28px;
+    }
+    .stage-wrap{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 32px;
+        span{
+            @include flexbox;
+            width: 24px;
+            height: 24px;
+            background-color: #efefef;
+            border-radius: 50%;
+            color: #949494;
+            font-size: 14px;
+            font-weight: 500;
+            margin-right: 8px;
+            .check{
+                display: block;
+                width: 11.17px;
+                height: 8.38px;
+            }
+            &.active{
+                background-color: #FFC700;
+                color: #865800;
+                font-weight: 700
+            }
+        }
+    }
+    h1{
+        @include text-style-24;
+        margin-bottom:52px
+    }
+    .button-wrap{
+        @include column-flexbox(end,center);
+        width: 100%;
+        height: 100%;
+        button{
+            @extend %btn-base;
+            
+        }
+    }
+}

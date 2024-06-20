@@ -29,7 +29,7 @@ function Login() {
             <img src={smu} className='smu-image' alt='smu-image'/>
             <input type='password' placeholder='비밀번호' onChange={(e)=>handleInput('pw',e.target.value)}/>
             
-             <Link to='/signup' className='gotopw'>
+             <Link to='/signup/1' className='gotopw'>
                 <p>회원가입하러가기</p>
                 <img src={gotopw} alt='gotopw-image'/>
             </Link>
