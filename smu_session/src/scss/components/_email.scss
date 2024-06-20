@@ -1,0 +1,50 @@
+.email-wrap{
+    @include column-flexbox(start,start);
+    padding: 64px 20px;
+    .backward-image{
+        display: block;
+        width: 28px;
+        height: auto;
+        margin-bottom: 36px;
+    }
+    .stage-wrap{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 32px;
+        span{
+            @include flexbox;
+            width: 24px;
+            height: 24px;
+            background-color: #efefef;
+            border-radius: 50%;
+            color: #949494;
+            font-size: 14px;
+            font-weight: 500;
+            margin-right: 8px
+        }
+    }
+    h1{
+        @include text-style-24;
+        margin-bottom:39px
+    }
+    .input-wrap{
+        display: block;
+        width: 100%;
+        position: relative;
+        input{
+            @extend %input-base;
+        }
+        .smu-image{
+            position: absolute;
+            right: 0;
+            top:7px;
+            display: block;
+            width: 180px;
+            height: 32px
+        }
+    }
+    button{
+        @extend %btn-base;
+    }
+}
