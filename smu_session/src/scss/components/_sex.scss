@@ -9,32 +9,49 @@
         height: auto;
         margin-bottom: 28px;
     }
-    .stage-wrap{
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        margin-bottom: 32px;
-        span{
-            @include flexbox;
-            width: 24px;
-            height: 24px;
+    .image-wrap{
+        @include flexbox(between,center);
+        width: 100%;
+        .card{
+            display: block;
+            width: 181px;
+            height: 230px;
+            border-radius: 16px;
             background-color: #efefef;
-            border-radius: 50%;
-            color: #949494;
-            font-size: 14px;
-            font-weight: 500;
             margin-right: 8px;
-            .check{
-                display: block;
-                width: 11.17px;
-                height: 8.38px;
-            }
+            padding: 20px;
+            position: relative;
             &.active{
-                background-color: #FFC700;
-                color: #865800;
-                font-weight: 700
+                background-color: #fffbee;
+                border: 1px solid #ecaa00;
+            }
+            &:last-of-type{
+                margin-right: 0;
+            }
+            .yellowcheck{
+                display: block;
+                width: 24px;
+                height: 24px;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            p{
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 28px;
+                color: #707070;
+                &.active{
+                    color: #d68d00;
+                }
+            }
+            img{
+                display: block;
+                width: 148px;
+                height: auto;
             }
         }
+        
     }
     h1{
         @include text-style-24;
