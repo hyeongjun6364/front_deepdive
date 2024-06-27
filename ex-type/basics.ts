@@ -2,10 +2,13 @@ let age: number;
 age =12;
 
 let age2: number = 25;
-
+// string 배열
 let hobbies: string[];
-
 hobbies = ['dgd','gdsg','tjr'];
+// number 배열
+let age3: number[];
+//boolean 배열
+let isBoolean: boolean[];
 
 type Person = {
     name: string,
