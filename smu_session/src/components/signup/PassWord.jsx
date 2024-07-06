@@ -26,15 +26,24 @@ function PassWord() {
     const handleSubmit=async(event)=>{
       //api통신
       event.preventDefault()
-      try{
-        const response = await axios.post('/api/member/password');
-        console.log(response.data)
+      if(isLength && isSpecial && isDuplication===false){
+        try{
+          const response = await axios.post('http://localhost:8080/api/user/password',{
+            "password": passWord
+          });
+          console.log(response.data)
+          navigate('/signup/4')
+        }
+        catch(error){
+          new Error(error)
+        }
+        navigate('/signup/4')
       }
-      catch(error){
-        new Error(error)
+      else{
+        alert('조건을 확인해주세요')
       }
-      navigate('/signup/4')
-     
+      
+      
      
     }
     
@@ -64,7 +73,7 @@ function PassWord() {
       </div>
       <div className='condition'>
         <span className={`circle ${isSpecial===true ? 'active' : ''}`}><img src={check} alt='check'/> </span>
-        <p className={`${isSpecial===true ? 'active' : ''}`}>특수 문자를 사용해 주세요</p>
+        <p className={ isSpecial===true ? 'active' : ''}>특수 문자를 사용해 주세요</p>
       </div>
       <div className='condition'>
         <span className={`circle ${`${isDuplication===false && passWord!=='' ? 'active' : ''}`}`}><img src={check} alt='check'/> </span>

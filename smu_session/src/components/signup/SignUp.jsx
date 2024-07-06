@@ -5,17 +5,23 @@ import smu from '../../assets/smu.svg';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 function SignUp() {
   const [emailData,setEmailData] = useState('');
-  const {id} = useParams();
   const navigate = useNavigate();
-  console.log(id)
   const handleInput=(value)=>{
     setEmailData((prev)=>({
       ...prev,
       value
     }))
+    
   }
-  const handleSubmit = async() => {
-    navigate('/signup/3')
+  const handleSubmit = async(event) => {
+    event.preventDefault();
+    if(emailData!==''){
+      navigate('/signup/3')
+    }
+    else{
+      alert('이메일 입력하세요')
+    }
+  
   }
   console.log(emailData)
   return (

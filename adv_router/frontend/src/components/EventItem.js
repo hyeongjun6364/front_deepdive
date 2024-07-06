@@ -3,7 +3,7 @@ import classes from './EventItem.module.css';
 
 function EventItem({ event }) {
   function startDeleteHandler() {
-    // ...
+    const proceed =window.confirm('are you sure?');
   }
 
   return (

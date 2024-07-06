@@ -7,14 +7,16 @@ import yellowman from '../../assets/yellowman.svg';
 import yellowwomen from '../../assets/yellowfemale.svg';
 import yellowcheck from '../../assets/yellowcheck.svg';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function Gender() {
     const [clickState,setClickState] = useState('');
-    const handleSubmit=async()=>{
+    const navigate = useNavigate();
+    const handleSubmit=async(event)=>{
+      event.preventDefault();
       try{
         // 성별 통신
-        const response = await axios.post(`/api/member/gender/${clickState}`,{
-  
+        const response = await axios.post(`/api/user/gender/${clickState}`,{
+          
         })
         // 회원가입
         const response2 = await axios.post('/api/member/register',{
@@ -22,10 +24,12 @@ function Gender() {
         })
         console.log(response.data)
         console.log(response2.data)
+        navigate('/');
       }
       catch(error){
         new Error(error);
       }
+      navigate('/')
     }
     return (
       <form className='sex-wrap'>

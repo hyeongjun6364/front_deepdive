@@ -1,9 +1,9 @@
 import { useState } from "react";
 export default function Signup() {
     const [passwordsAreNotEqual,setPasswordsAreNotEqual]= useState(false)
-
+  
     const handleSubmit= (event) => {
-        event.preventDefault();
+        event.preventDefault(); 
 
         const fd = new FormData(event.target);
         //email이라는 name을 가진 값을 얻게된다.
@@ -12,6 +12,7 @@ export default function Signup() {
         const data = Object.fromEntries(fd.entries())
         data.acquisition = acquisitionChannel
 
+        //유효성 검사- 중요
         if (data.password!==data['confirm-password']){
           setPasswordsAreNotEqual(true);
         }
