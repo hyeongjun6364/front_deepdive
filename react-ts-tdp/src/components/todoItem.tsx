@@ -1,9 +1,12 @@
 import React from 'react'
+import TodosModel from '../models/todos';
 
-const todoItem:React.FC = () => {
+const TodoItem:React.FC<{text:string; removeItem:()=>void}> = (props) => {
   return (
-    <div>todoItem</div>
+    <li onClick={props.removeItem}>
+                {props.text}
+    </li>
   )
 }
 
-export default todoItem
+export default TodoItem
