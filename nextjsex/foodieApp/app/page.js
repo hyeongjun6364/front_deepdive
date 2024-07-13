@@ -9,7 +9,7 @@ export default function Home() {
       <div className={classes.slidehow}>
       <ImageSlideshow/>
       </div>
-      
+  
       <div>
         <div className={classes.hero}>
         
@@ -34,6 +34,7 @@ export default function Home() {
             NextLevel Food is a place to discover new dishes, and to connect
             with other food lovers.
           </p>
+          <p>made by LimHyeonJun</p>
         </section>
 
         <section className={classes.section}>
