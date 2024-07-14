@@ -11,3 +11,7 @@ export async function getMeals(){
     //모든요소를 다 선택하고 데이터 불러오기
     return db.prepare('SELECT * FROM meals').all();
 }
+
+export async function getMeal(slug){
+    return db.prepare('SELECT * FROM meals WHERE slug = ?').get(slug);
+}
