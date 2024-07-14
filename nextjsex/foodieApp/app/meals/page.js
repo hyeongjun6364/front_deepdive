@@ -2,7 +2,9 @@
 import classes from './page.module.css'
 import Link from 'next/link'
 import MealsGrid from '../components/meals/meals-grid'
-function page() {
+import { getMeals } from '@/lib/meal'
+async function MealsPage() {
+  const meals = await getMeals();
   return (
     <>
       <header className={classes.header}>
@@ -19,11 +21,11 @@ function page() {
     </p>
   </header> 
   <main className={classes.main}>
-    <MealsGrid meals={[]}/>
+    <MealsGrid meals={meals}/>
   </main>
     </>
   
   )
 }
 
-export default page
+export default MealsPage
