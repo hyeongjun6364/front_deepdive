@@ -2,9 +2,14 @@ import React from 'react'
 import classes from './page.module.css';
 import Image from 'next/image';
 import { getMeal } from '@/lib/meal';
+import { notFound } from 'next/navigation';
 
-async function MealDetailPage({params}) {
-  const meal = await getMeal(params.slug)
+function MealDetailPage({params}) {
+  const meal =  getMeal(params.slug)
+  if(!meal){
+    //이 컴포넌트가 실행되는것을 멈추고 notFound함수를 실행한다.
+    notFound();
+  }
   meal.instructions = meal.instructions.replace(/\n/g,'<br/>')
   console.log(meal)
   return (
