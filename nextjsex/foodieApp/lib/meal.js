@@ -1,4 +1,6 @@
 import sql from 'better-sqlite3';
+import slugify from 'slugify';
+import xss from 'xss';
 //database에 연결
 const db=sql('meals.db');
 
@@ -14,4 +16,9 @@ export async function getMeals(){
 
 export function getMeal(slug){
     return db.prepare('SELECT * FROM meals WHERE slug = ?').get(slug);
+}
+
+export function saveMeal(meal){
+    meal.slug = slugify(meal.title,{lower:ture});// 모든문자를 소문자로 전달
+    meal.instructions = xss(meal.instructions);
 }
