@@ -1,6 +1,9 @@
 //서버에서만 실행되는 함수이다. async를 무조건 붙여줘야한다.
 'use server';
 
+import { redirect } from "next/navigation";
+import { saveMeal } from "./meal";
+
 export async function shareMeal(formData){
     //form 객체 만들기
     const meal ={
@@ -12,6 +15,7 @@ export async function shareMeal(formData){
       creator: formData.get('name'),
       creator_email: formData.get('email')
     }
-
-    console.log(meal)
+    await saveMeal(meal)
+    redirect('/meals')
+    //console.log(meal)
   }
