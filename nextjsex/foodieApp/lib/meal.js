@@ -1,3 +1,7 @@
+import { S3 } from '@aws-sdk/client-s3'
+const s3 = new S3({
+  region: 'us-east-1',
+})
 //파일 시스템 api
 import fs from 'node:fs'
 
@@ -28,15 +32,15 @@ export async function saveMeal(meal) {
   const extension = meal.image.name.split('.').pop() //확장자 가져오기
   const fileName = `${meal.slug}.${extension}` // 파일명 짓고
 
-  const stream = fs.createWriteStream(`public/images/${fileName}`)
   const bufferedImage = await meal.image.arrayBuffer()
 
-  stream.write(Buffer.from(bufferedImage), (error) => {
-    if (error) {
-      throw new Error('Saving image failed!')
-    }
+  s3.putObject({
+    Bucket: 'hyungjun-nextjs-demo-users-image',
+    Key: fileName,
+    Body: Buffer.from(bufferedImage),
+    ContentType: meal.image.type,
   })
-  meal.image = `/images/${fileName}` // 모든 이미지에 관한 요청은 public으로 자동으로 요청되기에 public을 경로에서 빼기
+  meal.image = fileName // 모든 이미지에 관한 요청은 public으로 자동으로 요청되기에 public을 경로에서 빼기
 
   db.prepare(
     `
